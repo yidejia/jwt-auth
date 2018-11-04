@@ -17,11 +17,8 @@ class TokenValidator extends Validator
 {
     /**
      * Check the structure of the token.
-<<<<<<< HEAD
      *
      * @param  string  $value
-=======
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      *
      * @return string
      */
@@ -34,12 +31,8 @@ class TokenValidator extends Validator
      * @param  string  $token
      *
      * @throws \Tymon\JWTAuth\Exceptions\TokenInvalidException
-<<<<<<< HEAD
      *
      * @return string
-=======
-     * @return bool
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      */
     protected function validateStructure($token)
     {

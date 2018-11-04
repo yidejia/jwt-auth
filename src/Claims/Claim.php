@@ -43,13 +43,9 @@ abstract class Claim implements Arrayable, ClaimContract, Jsonable, JsonSerializ
     }
 
     /**
-<<<<<<< HEAD
      * Set the claim value, and call a validate method.
      *
      * @param  mixed  $value
-=======
-     * Set the claim value, and call a validate method if available.
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      *
      * @throws \Tymon\JWTAuth\Exceptions\InvalidClaimException
      *
@@ -57,15 +53,7 @@ abstract class Claim implements Arrayable, ClaimContract, Jsonable, JsonSerializ
      */
     public function setValue($value)
     {
-<<<<<<< HEAD
         $this->value = $this->validateCreate($value);
-=======
-        if (! $this->validate($value)) {
-            throw new InvalidClaimException('Invalid value provided for claim "'.$this->getName().'": '.$value);
-        }
-
-        $this->value = $value;
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
 
         return $this;
     }
@@ -82,11 +70,8 @@ abstract class Claim implements Arrayable, ClaimContract, Jsonable, JsonSerializ
 
     /**
      * Set the claim name.
-<<<<<<< HEAD
      *
      * @param  string  $name
-=======
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      *
      * @return $this
      */
@@ -108,7 +93,6 @@ abstract class Claim implements Arrayable, ClaimContract, Jsonable, JsonSerializ
     }
 
     /**
-<<<<<<< HEAD
      * Validate the claim in a standalone Claim context.
      *
      * @param  mixed  $value
@@ -148,11 +132,6 @@ abstract class Claim implements Arrayable, ClaimContract, Jsonable, JsonSerializ
      * @param  mixed  $value
      * @param  bool  $strict
      *
-=======
-     * Validate the Claim value.
-     *
-     * @param  $value
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      * @return bool
      */
     public function matches($value, $strict = true)
@@ -161,7 +140,6 @@ abstract class Claim implements Arrayable, ClaimContract, Jsonable, JsonSerializ
     }
 
     /**
-<<<<<<< HEAD
      * Convert the object into something JSON serializable.
      *
      * @return array
@@ -172,8 +150,6 @@ abstract class Claim implements Arrayable, ClaimContract, Jsonable, JsonSerializ
     }
 
     /**
-=======
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      * Build a key value array comprising of the claim name and value.
      *
      * @return array
@@ -184,7 +160,6 @@ abstract class Claim implements Arrayable, ClaimContract, Jsonable, JsonSerializ
     }
 
     /**
-<<<<<<< HEAD
      * Get the claim as JSON.
      *
      * @param  int  $options
@@ -198,9 +173,6 @@ abstract class Claim implements Arrayable, ClaimContract, Jsonable, JsonSerializ
 
     /**
      * Get the payload as a string.
-=======
-     * Get the claim as a string.
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      *
      * @return string
      */

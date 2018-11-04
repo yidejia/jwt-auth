@@ -13,12 +13,5 @@ namespace Tymon\JWTAuth\Exceptions;
 
 class TokenBlacklistedException extends TokenInvalidException
 {
-<<<<<<< HEAD
     //
-=======
-    /**
-     * @var int
-     */
-    protected $statusCode = 401;
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
 }

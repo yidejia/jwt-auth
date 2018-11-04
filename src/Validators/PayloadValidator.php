@@ -31,11 +31,8 @@ class PayloadValidator extends Validator
     ];
 
     /**
-<<<<<<< HEAD
      * The refresh TTL.
      *
-=======
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      * @var int
      */
     protected $refreshTTL = 20160;
@@ -57,11 +54,8 @@ class PayloadValidator extends Validator
     /**
      * Ensure the payload contains the required claims and
      * the claims have the relevant type.
-<<<<<<< HEAD
      *
      * @param  \Tymon\JWTAuth\Claims\Collection  $claims
-=======
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      *
      * @throws \Tymon\JWTAuth\Exceptions\TokenInvalidException
      *
@@ -69,31 +63,20 @@ class PayloadValidator extends Validator
      */
     protected function validateStructure(Collection $claims)
     {
-<<<<<<< HEAD
         if ($this->requiredClaims && ! $claims->hasAllClaims($this->requiredClaims)) {
-=======
-        if (count(array_diff($this->requiredClaims, array_keys($payload))) !== 0) {
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
             throw new TokenInvalidException('JWT payload does not contain the required claims');
         }
     }
 
     /**
      * Validate the payload timestamps.
-<<<<<<< HEAD
      *
      * @param  \Tymon\JWTAuth\Claims\Collection  $claims
-=======
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      *
      * @throws \Tymon\JWTAuth\Exceptions\TokenExpiredException
      * @throws \Tymon\JWTAuth\Exceptions\TokenInvalidException
-<<<<<<< HEAD
      *
      * @return \Tymon\JWTAuth\Claims\Collection
-=======
-     * @return bool
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      */
     protected function validatePayload(Collection $claims)
     {
@@ -102,11 +85,8 @@ class PayloadValidator extends Validator
 
     /**
      * Check the token in the refresh flow context.
-<<<<<<< HEAD
      *
      * @param  \Tymon\JWTAuth\Claims\Collection  $claims
-=======
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      *
      * @throws \Tymon\JWTAuth\Exceptions\TokenExpiredException
      *
@@ -114,24 +94,13 @@ class PayloadValidator extends Validator
      */
     protected function validateRefresh(Collection $claims)
     {
-<<<<<<< HEAD
         return $this->refreshTTL === null ? $claims : $claims->validate('refresh', $this->refreshTTL);
-=======
-        if (isset($payload['iat']) && Utils::timestamp($payload['iat'])->addMinutes($this->refreshTTL)->isPast()) {
-            throw new TokenExpiredException('Token has expired and can no longer be refreshed', 400);
-        }
-
-        return true;
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
     }
 
     /**
      * Set the required claims.
-<<<<<<< HEAD
      *
      * @param  array  $claims
-=======
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      *
      * @return $this
      */
@@ -144,15 +113,10 @@ class PayloadValidator extends Validator
 
     /**
      * Set the refresh ttl.
-<<<<<<< HEAD
      *
      * @param  int  $ttl
      *
      * @return $this
-=======
-     *
-     * @param int  $ttl
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      */
     public function setRefreshTTL($ttl)
     {

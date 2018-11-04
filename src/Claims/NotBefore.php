@@ -18,25 +18,12 @@ class NotBefore extends Claim
     use DatetimeTrait;
 
     /**
-<<<<<<< HEAD
      * {@inheritdoc}
-=======
-     * The claim name.
-     *
-     * @var string
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      */
     protected $name = 'nbf';
 
     /**
-<<<<<<< HEAD
      * {@inheritdoc}
-=======
-     * Validate the not before claim.
-     *
-     * @param  mixed  $value
-     * @return bool
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      */
     public function validatePayload()
     {

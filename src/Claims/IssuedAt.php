@@ -22,18 +22,11 @@ class IssuedAt extends Claim
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritdoc}
-=======
-     * The claim name.
-     *
-     * @var string
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      */
     protected $name = 'iat';
 
     /**
-<<<<<<< HEAD
      * {@inheritdoc}
      */
     public function validateCreate($value)
@@ -59,12 +52,6 @@ class IssuedAt extends Claim
 
     /**
      * {@inheritdoc}
-=======
-     * Validate the issued at claim.
-     *
-     * @param  mixed  $value
-     * @return bool
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      */
     public function validateRefresh($refreshTTL)
     {

@@ -31,7 +31,7 @@ class Blacklist
     protected $gracePeriod = 0;
 
     /**
-     * Number of minutes from issue date in which a JWT can be refreshed.
+     * Number of minutes from issue date in which a JWT can be refreshed.<<
      *
      * @var int
      */
