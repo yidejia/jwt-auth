@@ -43,6 +43,7 @@ class Factory
      *
      * @var array
      */
+<<<<<<< HEAD
     private $classMap = [
         'aud' => Audience::class,
         'exp' => Expiration::class,
@@ -66,6 +67,19 @@ class Factory
     }
 
     /**
+=======
+    private static $classMap = [
+        'aud' => 'Tymon\JWTAuth\Claims\Audience',
+        'exp' => 'Tymon\JWTAuth\Claims\Expiration',
+        'iat' => 'Tymon\JWTAuth\Claims\IssuedAt',
+        'iss' => 'Tymon\JWTAuth\Claims\Issuer',
+        'jti' => 'Tymon\JWTAuth\Claims\JwtId',
+        'nbf' => 'Tymon\JWTAuth\Claims\NotBefore',
+        'sub' => 'Tymon\JWTAuth\Claims\Subject',
+    ];
+
+    /**
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      * Get the instance of the claim when passing the name and value.
      *
      * @param  string  $name
@@ -90,7 +104,10 @@ class Factory
      * Check whether the claim exists.
      *
      * @param  string  $name
+<<<<<<< HEAD
      *
+=======
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      * @return bool
      */
     public function has($name)

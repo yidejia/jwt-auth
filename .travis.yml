@@ -8,6 +8,7 @@ cache:
     - $HOME/.composer/cache
 
 language: php
+dist: trusty
 
 env:
   global:
@@ -86,8 +87,12 @@ install:
   - travis_retry composer install --prefer-dist --no-interaction --no-suggest
 
 script:
+<<<<<<< HEAD
   - if [[ $LARAVEL = '5.1.*' ]]; then composer test:ci -- --exclude-group laravel-5.2; fi
   - if [[ $LARAVEL != '5.1.*' ]]; then composer test:ci; fi
 
 after_success:
   - if [[ $COVERAGE = 1 ]]; then bash <(curl -s https://codecov.io/bash); fi
+=======
+  - phpunit --coverage-text --coverage-clover=coverage.clover
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8

@@ -22,8 +22,11 @@ class Token
 
     /**
      * Create a new JSON Web Token.
+<<<<<<< HEAD
      *
      * @param  string  $value
+=======
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      *
      * @return void
      */

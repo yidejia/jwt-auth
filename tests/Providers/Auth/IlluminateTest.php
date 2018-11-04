@@ -58,6 +58,14 @@ class IlluminateTest extends AbstractTestCase
     }
 
     /** @test */
+    public function it_should_bubble_exceptions_from_auth()
+    {
+        $this->authManager->shouldReceive('onceUsingId')->once()->with(123)->andThrow(new \Exception('Some auth failure'));
+        $this->setExpectedException('Exception', 'Some auth failure');
+        $this->auth->byId(123);
+    }
+
+    /** @test */
     public function it_should_return_the_currently_authenticated_user()
     {
         $this->authManager->shouldReceive('user')->once()->andReturn((object) ['id' => 1]);

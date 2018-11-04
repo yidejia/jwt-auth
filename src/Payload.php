@@ -26,7 +26,11 @@ use Tymon\JWTAuth\Validators\PayloadValidator;
 class Payload implements ArrayAccess, Arrayable, Countable, Jsonable, JsonSerializable
 {
     /**
+<<<<<<< HEAD
      * The collection of claims.
+=======
+     * The array of claims.
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      *
      * @var \Tymon\JWTAuth\Claims\Collection
      */
@@ -34,10 +38,13 @@ class Payload implements ArrayAccess, Arrayable, Countable, Jsonable, JsonSerial
 
     /**
      * Build the Payload.
+<<<<<<< HEAD
      *
      * @param  \Tymon\JWTAuth\Claims\Collection  $claims
      * @param  \Tymon\JWTAuth\Validators\PayloadValidator  $validator
      * @param  bool  $refreshFlow
+=======
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      *
      * @return void
      */
@@ -57,7 +64,11 @@ class Payload implements ArrayAccess, Arrayable, Countable, Jsonable, JsonSerial
     }
 
     /**
+<<<<<<< HEAD
      * Checks if a payload matches some expected values.
+=======
+     * Get the array of claims.
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      *
      * @param  array  $values
      * @param  bool  $strict
@@ -82,6 +93,7 @@ class Payload implements ArrayAccess, Arrayable, Countable, Jsonable, JsonSerial
     }
 
     /**
+<<<<<<< HEAD
      * Checks if a payload strictly matches some expected values.
      *
      * @param  array  $values
@@ -97,6 +109,9 @@ class Payload implements ArrayAccess, Arrayable, Countable, Jsonable, JsonSerial
      * Get the payload.
      *
      * @param  mixed  $claim
+=======
+     * Get the payload.
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      *
      * @return mixed
      */
@@ -116,6 +131,7 @@ class Payload implements ArrayAccess, Arrayable, Countable, Jsonable, JsonSerial
     }
 
     /**
+<<<<<<< HEAD
      * Get the underlying Claim instance.
      *
      * @param  string  $claim
@@ -132,6 +148,11 @@ class Payload implements ArrayAccess, Arrayable, Countable, Jsonable, JsonSerial
      *
      * @param  \Tymon\JWTAuth\Claims\Claim  $claim
      *
+=======
+     * Determine whether the payload has the claim.
+     *
+     * @param  \Tymon\JWTAuth\Claims\Claim  $claim
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      * @return bool
      */
     public function has(Claim $claim)
@@ -172,6 +193,7 @@ class Payload implements ArrayAccess, Arrayable, Countable, Jsonable, JsonSerial
     }
 
     /**
+<<<<<<< HEAD
      * Get the payload as JSON.
      *
      * @param  int  $options
@@ -184,6 +206,8 @@ class Payload implements ArrayAccess, Arrayable, Countable, Jsonable, JsonSerial
     }
 
     /**
+=======
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      * Get the payload as a string.
      *
      * @return string
@@ -232,10 +256,13 @@ class Payload implements ArrayAccess, Arrayable, Countable, Jsonable, JsonSerial
 
     /**
      * Don't allow changing the payload as it should be immutable.
+<<<<<<< HEAD
      *
      * @param  string  $key
      *
      * @throws \Tymon\JWTAuth\Exceptions\PayloadException
+=======
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      *
      * @return void
      */
@@ -245,6 +272,7 @@ class Payload implements ArrayAccess, Arrayable, Countable, Jsonable, JsonSerial
     }
 
     /**
+<<<<<<< HEAD
      * Count the number of claims.
      *
      * @return int
@@ -258,6 +286,9 @@ class Payload implements ArrayAccess, Arrayable, Countable, Jsonable, JsonSerial
      * Invoke the Payload as a callable function.
      *
      * @param  mixed  $claim
+=======
+     * Magically get a claim value.
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      *
      * @return mixed
      */

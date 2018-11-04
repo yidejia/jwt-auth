@@ -9,9 +9,16 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 namespace Tymon\JWTAuth\Test;
 
 use Mockery;
+=======
+namespace Tymon\JWTAuth\Test\Providers\JWT;
+
+use Mockery;
+use Carbon\Carbon;
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
 use Tymon\JWTAuth\Payload;
 use Tymon\JWTAuth\Blacklist;
 use Tymon\JWTAuth\Claims\JwtId;
@@ -19,10 +26,14 @@ use Tymon\JWTAuth\Claims\Issuer;
 use Tymon\JWTAuth\Claims\Subject;
 use Tymon\JWTAuth\Claims\IssuedAt;
 use Tymon\JWTAuth\Claims\NotBefore;
+<<<<<<< HEAD
 use Tymon\JWTAuth\Claims\Collection;
 use Tymon\JWTAuth\Claims\Expiration;
 use Tymon\JWTAuth\Contracts\Providers\Storage;
 use Tymon\JWTAuth\Validators\PayloadValidator;
+=======
+use Tymon\JWTAuth\Claims\Expiration;
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
 
 class BlacklistTest extends AbstractTestCase
 {
@@ -43,7 +54,15 @@ class BlacklistTest extends AbstractTestCase
 
     public function setUp()
     {
+<<<<<<< HEAD
         parent::setUp();
+=======
+        Carbon::setTestNow(Carbon::createFromTimeStampUTC(123));
+
+        $this->storage = Mockery::mock('Tymon\JWTAuth\Providers\Storage\StorageInterface');
+        $this->blacklist = new Blacklist($this->storage);
+        $this->blacklist->setRefreshTTL(20160);
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
 
         $this->storage = Mockery::mock(Storage::class);
         $this->blacklist = new Blacklist($this->storage);
@@ -78,14 +97,21 @@ class BlacklistTest extends AbstractTestCase
         $claims = [
             new Subject(1),
             new Issuer('http://example.com'),
+<<<<<<< HEAD
             new NotBefore($this->testNowTimestamp),
             new IssuedAt($this->testNowTimestamp),
+=======
+            new Expiration(100 + 3600),
+            new NotBefore(100),
+            new IssuedAt(100),
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
             new JwtId('foo'),
         ];
         $collection = Collection::make($claims);
 
         $this->validator->shouldReceive('setRefreshFlow->check')->andReturn($collection);
 
+<<<<<<< HEAD
         $payload = new Payload($collection, $this->validator);
 
         $this->storage->shouldReceive('forever')->with('foo', 'forever')->once();
@@ -94,13 +120,61 @@ class BlacklistTest extends AbstractTestCase
 
     /** @test */
     public function it_should_return_true_when_adding_an_expired_token_to_the_blacklist()
+=======
+        $this->storage->shouldReceive('add')->once()->with('foo', [], 20160);
+        $this->assertTrue($this->blacklist->add($payload));
+    }
+
+    /** @test */
+    public function it_should_return_true_when_adding_a_refreshable_expired_token_to_the_blacklist()
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
     {
         $claims = [
             new Subject(1),
             new Issuer('http://example.com'),
+<<<<<<< HEAD
             new Expiration($this->testNowTimestamp - 3600),
             new NotBefore($this->testNowTimestamp),
             new IssuedAt($this->testNowTimestamp),
+=======
+            new Expiration(101),
+            new NotBefore(100),
+            new IssuedAt(100),
+            new JwtId('foo'),
+        ];
+        $payload = new Payload($claims, $this->validator, true);
+
+        $this->storage->shouldReceive('add')->once()->with('foo', [], 20160);
+        $this->assertTrue($this->blacklist->add($payload));
+    }
+
+    /** @test */
+    public function it_should_return_false_when_adding_an_unrefreshable_token_to_the_blacklist()
+    {
+        $claims = [
+            new Subject(1),
+            new Issuer('http://example.com'),
+            new Expiration(100), // default refresh_ttl
+            new NotBefore(100),
+            new IssuedAt(100 - 20160 * 60),
+            new JwtId('foo'),
+        ];
+        $payload = new Payload($claims, $this->validator, true);
+
+        $this->storage->shouldReceive('add')->never();
+        $this->assertFalse($this->blacklist->add($payload));
+    }
+
+    /** @test */
+    public function it_should_return_false_when_adding_a_unrefreshable_token_after_modifying_refresh_ttl()
+    {
+        $claims = [
+            new Subject(1),
+            new Issuer('http://example.com'),
+            new Expiration(101),
+            new NotBefore(100),
+            new IssuedAt(100),
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
             new JwtId('foo'),
         ];
         $collection = Collection::make($claims);
@@ -109,8 +183,14 @@ class BlacklistTest extends AbstractTestCase
 
         $payload = new Payload($collection, $this->validator, true);
 
+<<<<<<< HEAD
         $this->storage->shouldReceive('add')->with('foo', ['valid_until' => $this->testNowTimestamp], 20161)->once();
         $this->assertTrue($this->blacklist->add($payload));
+=======
+        $this->storage->shouldReceive('add')->never();
+        $this->blacklist->setRefreshTTL(0);
+        $this->assertFalse($this->blacklist->add($payload));
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
     }
 
     /** @test */
@@ -119,6 +199,7 @@ class BlacklistTest extends AbstractTestCase
         $claims = [
             new Subject(1),
             new Issuer('http://example.com'),
+<<<<<<< HEAD
             new Expiration($this->testNowTimestamp + 3600),
             new NotBefore($this->testNowTimestamp),
             new IssuedAt($this->testNowTimestamp),
@@ -183,6 +264,11 @@ class BlacklistTest extends AbstractTestCase
             new Expiration($this->testNowTimestamp + 3600),
             new NotBefore($this->testNowTimestamp),
             new IssuedAt($this->testNowTimestamp),
+=======
+            new Expiration(123 + 3600),
+            new NotBefore(123),
+            new IssuedAt(123),
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
             new JwtId('foobar'),
         ];
         $collection = Collection::make($claims);
@@ -193,6 +279,10 @@ class BlacklistTest extends AbstractTestCase
 
         $this->storage->shouldReceive('get')->with('foobar')->once()->andReturn('forever');
 
+<<<<<<< HEAD
+=======
+        $this->storage->shouldReceive('has')->once()->with('foobar')->andReturn(true);
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
         $this->assertTrue($this->blacklist->has($payload));
     }
 
@@ -224,9 +314,15 @@ class BlacklistTest extends AbstractTestCase
         $claims = [
             new Subject(1),
             new Issuer('http://example.com'),
+<<<<<<< HEAD
             new Expiration($this->testNowTimestamp + 3600),
             new NotBefore($this->testNowTimestamp),
             new IssuedAt($this->testNowTimestamp),
+=======
+            new Expiration(123 + 3600),
+            new NotBefore(123),
+            new IssuedAt(123),
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
             new JwtId('foobar'),
         ];
         $collection = Collection::make($claims);
@@ -235,7 +331,7 @@ class BlacklistTest extends AbstractTestCase
 
         $payload = new Payload($collection, $this->validator);
 
-        $this->storage->shouldReceive('destroy')->with('foobar')->andReturn(true);
+        $this->storage->shouldReceive('destroy')->once()->with('foobar')->andReturn(true);
         $this->assertTrue($this->blacklist->remove($payload));
     }
 
@@ -265,7 +361,7 @@ class BlacklistTest extends AbstractTestCase
     /** @test */
     public function it_should_empty_the_blacklist()
     {
-        $this->storage->shouldReceive('flush');
+        $this->storage->shouldReceive('flush')->once();
         $this->assertTrue($this->blacklist->clear());
     }
 

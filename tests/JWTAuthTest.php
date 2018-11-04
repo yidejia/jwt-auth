@@ -12,18 +12,25 @@
 namespace Tymon\JWTAuth\Test;
 
 use Mockery;
+<<<<<<< HEAD
 use stdClass;
 use Tymon\JWTAuth\Token;
 use Tymon\JWTAuth\Factory;
+=======
+use Tymon\JWTAuth\Token;
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
 use Tymon\JWTAuth\JWTAuth;
 use Tymon\JWTAuth\Manager;
 use Tymon\JWTAuth\Payload;
 use Illuminate\Http\Request;
+<<<<<<< HEAD
 use Tymon\JWTAuth\Http\Parser\Parser;
 use Tymon\JWTAuth\Test\Stubs\UserStub;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Contracts\Providers\Auth;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
+=======
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
 
 class JWTAuthTest extends AbstractTestCase
 {
@@ -157,6 +164,11 @@ class JWTAuthTest extends AbstractTestCase
      */
     public function it_should_throw_an_exception_when_not_providing_a_token()
     {
+<<<<<<< HEAD
+=======
+        $this->setExpectedException('Tymon\JWTAuth\Exceptions\JWTException');
+
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
         $this->jwtAuth->toUser();
     }
 

@@ -9,20 +9,32 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 namespace Tymon\JWTAuth\Test;
 
 use Mockery;
 use Tymon\JWTAuth\Payload;
 use Tymon\JWTAuth\Claims\Claim;
+=======
+namespace Tymon\JWTAuth\Test\Providers\JWT;
+
+use Mockery;
+use Carbon\Carbon;
+use Tymon\JWTAuth\Payload;
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
 use Tymon\JWTAuth\Claims\JwtId;
 use Tymon\JWTAuth\Claims\Issuer;
 use Tymon\JWTAuth\Claims\Subject;
 use Tymon\JWTAuth\Claims\Audience;
 use Tymon\JWTAuth\Claims\IssuedAt;
 use Tymon\JWTAuth\Claims\NotBefore;
+<<<<<<< HEAD
 use Tymon\JWTAuth\Claims\Collection;
 use Tymon\JWTAuth\Claims\Expiration;
 use Tymon\JWTAuth\Validators\PayloadValidator;
+=======
+use Tymon\JWTAuth\Claims\Expiration;
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
 
 class PayloadTest extends AbstractTestCase
 {
@@ -38,6 +50,7 @@ class PayloadTest extends AbstractTestCase
 
     public function setUp()
     {
+<<<<<<< HEAD
         parent::setUp();
 
         $this->payload = $this->getTestPayload();
@@ -56,6 +69,16 @@ class PayloadTest extends AbstractTestCase
             new Expiration($this->testNowTimestamp + 3600),
             new NotBefore($this->testNowTimestamp),
             new IssuedAt($this->testNowTimestamp),
+=======
+        Carbon::setTestNow(Carbon::createFromTimeStampUTC(123));
+
+        $claims = [
+            new Subject(1),
+            new Issuer('http://example.com'),
+            new Expiration(123 + 3600),
+            new NotBefore(123),
+            new IssuedAt(123),
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
             new JwtId('foo'),
         ];
 

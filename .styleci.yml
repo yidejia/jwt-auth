@@ -1,8 +1,14 @@
 preset: laravel
 
 enabled:
+<<<<<<< HEAD
   - is_null
   - no_useless_else
   - phpdoc_order
   - phpdoc_separation
   - unalign_double_arrow
+=======
+  - unalign_double_arrow
+
+linting: true
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8

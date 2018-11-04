@@ -14,7 +14,13 @@ namespace Tymon\JWTAuth\Claims;
 class Audience extends Claim
 {
     /**
+<<<<<<< HEAD
      * {@inheritdoc}
+=======
+     * The claim name.
+     *
+     * @var string
+>>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      */
     protected $name = 'aud';
 }
