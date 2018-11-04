@@ -80,7 +80,6 @@ class JWTGuard implements Guard
             ($payload = $this->jwt->check(true)) &&
             $this->validateSubject()
         ) {
-
             return $this->user = UserRepository::getByStaffId($payload['user_id']);
         }
     }

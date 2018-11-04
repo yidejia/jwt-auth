@@ -24,7 +24,6 @@ class Blacklist
     protected $storage;
 
     /**
-<<<<<<< HEAD
      * The grace period when a token is blacklisted. In seconds.
      *
      * @var int
@@ -32,8 +31,6 @@ class Blacklist
     protected $gracePeriod = 0;
 
     /**
-=======
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      * Number of minutes from issue date in which a JWT can be refreshed.
      *
      * @var int
@@ -41,7 +38,6 @@ class Blacklist
     protected $refreshTTL = 20160;
 
     /**
-<<<<<<< HEAD
      * The unique key held within the blacklist.
      *
      * @var string
@@ -54,9 +50,6 @@ class Blacklist
      * @param  \Tymon\JWTAuth\Contracts\Providers\Storage  $storage
      *
      * @return void
-=======
-     * @param \Tymon\JWTAuth\Providers\Storage\StorageInterface  $storage
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      */
     public function __construct(Storage $storage)
     {
@@ -67,15 +60,11 @@ class Blacklist
      * Add the token (jti claim) to the blacklist.
      *
      * @param  \Tymon\JWTAuth\Payload  $payload
-<<<<<<< HEAD
      *
-=======
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      * @return bool
      */
     public function add(Payload $payload)
     {
-<<<<<<< HEAD
         // if there is no exp claim then add the jwt to
         // the blacklist indefinitely
         if (! $payload->hasKey('exp')) {
@@ -119,24 +108,6 @@ class Blacklist
     public function addForever(Payload $payload)
     {
         $this->storage->forever($this->getKey($payload), 'forever');
-=======
-        $exp = Utils::timestamp($payload['exp']);
-        $refreshExp = Utils::timestamp($payload['iat'])->addMinutes($this->refreshTTL);
-
-        // there is no need to add the token to the blacklist
-        // if the token has already expired AND the refresh_ttl
-        // has gone by
-        if ($exp->isPast() && $refreshExp->isPast()) {
-            return false;
-        }
-
-        // Set the cache entry's lifetime to be equal to the amount
-        // of refreshable time it has remaining (which is the larger
-        // of `exp` and `iat+refresh_ttl`), rounded up a minute
-        $cacheLifetime = $exp->max($refreshExp)->addMinute()->diffInMinutes();
-
-        $this->storage->add($payload['jti'], [], $cacheLifetime);
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
 
         return true;
     }
@@ -145,10 +116,7 @@ class Blacklist
      * Determine whether the token has been blacklisted.
      *
      * @param  \Tymon\JWTAuth\Payload  $payload
-<<<<<<< HEAD
      *
-=======
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      * @return bool
      */
     public function has(Payload $payload)
@@ -168,10 +136,7 @@ class Blacklist
      * Remove the token (jti claim) from the blacklist.
      *
      * @param  \Tymon\JWTAuth\Payload  $payload
-<<<<<<< HEAD
      *
-=======
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      * @return bool
      */
     public function remove(Payload $payload)
@@ -192,7 +157,6 @@ class Blacklist
     }
 
     /**
-<<<<<<< HEAD
      * Get the timestamp when the blacklist comes into effect
      * This defaults to immediate (0 seconds).
      *
@@ -257,11 +221,6 @@ class Blacklist
      * Set the refresh time limit.
      *
      * @param  int  $ttl
-=======
-     * Set the refresh time limit.
-     *
-     * @param  int
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
      *
      * @return $this
      */
@@ -271,7 +230,6 @@ class Blacklist
 
         return $this;
     }
-<<<<<<< HEAD
 
     /**
      * Get the refresh time limit.
@@ -282,6 +240,4 @@ class Blacklist
     {
         return $this->refreshTTL;
     }
-=======
->>>>>>> 614ee3410a1cc18ef13c8d5ffd491b5608afabd8
 }

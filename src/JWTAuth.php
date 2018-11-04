@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of jwt-auth.
  *
@@ -7,9 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace Tymon\JWTAuth;
+
 use Tymon\JWTAuth\Http\Parser\Parser;
 use Tymon\JWTAuth\Contracts\Providers\Auth;
+
 class JWTAuth extends JWT
 {
     /**
@@ -18,6 +22,7 @@ class JWTAuth extends JWT
      * @var \Tymon\JWTAuth\Contracts\Providers\Auth
      */
     protected $auth;
+
     /**
      * Constructor.
      *
@@ -32,6 +37,7 @@ class JWTAuth extends JWT
         parent::__construct($manager, $parser);
         $this->auth = $auth;
     }
+
     /**
      * Attempt to authenticate the user and return the token.
      *
@@ -44,8 +50,10 @@ class JWTAuth extends JWT
         if (! $this->auth->byCredentials($credentials)) {
             return false;
         }
+
         return $this->fromUser($this->user());
     }
+
     /**
      * Authenticate a user via a token.
      *
@@ -53,12 +61,15 @@ class JWTAuth extends JWT
      */
     public function authenticate()
     {
-        $id = $this->getPayload()->get('user_id');
-        if (! $this->auth->byId($id)) {
+        $staff_id = $this->getPayload()->get('user_id');
+
+        if (! $this->auth->byId($staff_id)) {
             return false;
         }
+
         return $this->user();
     }
+
     /**
      * Alias for authenticate().
      *
@@ -68,6 +79,7 @@ class JWTAuth extends JWT
     {
         return $this->authenticate();
     }
+
     /**
      * Get the authenticated user.
      *
